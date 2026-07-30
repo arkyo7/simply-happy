@@ -1,4 +1,5 @@
 import { BuyButton } from "./BuyButton";
+import { KitPdfLinks } from "./KitPdfLinks";
 import { siteConfig } from "@/config/siteConfig";
 
 const specs = [

@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { BuyButton } from "./BuyButton";
+import { KitPdfLinks } from "./KitPdfLinks";
 import { OFFER_ANCHOR_ID, siteConfig } from "@/config/siteConfig";
 
 const included = [
