@@ -28,8 +28,8 @@ export const Route = createFileRoute("/")({
           "Um passo a passo prático para brasileiros que querem procurar trabalho na Bélgica com mais direção.",
       },
       { property: "og:type", content: "product" },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: "/image/mockup-kit-emprego-belgica.webp" },
+      { property: "og:url", content: absoluteUrl("/") },
+      { property: "og:image", content: absoluteUrl(siteConfig.images.mockup) },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Kit Emprego Bélgica 2026" },
       {
@@ -37,13 +37,14 @@ export const Route = createFileRoute("/")({
         content:
           "Um passo a passo prático para brasileiros que querem procurar trabalho na Bélgica com mais direção.",
       },
+      { name: "twitter:image", content: absoluteUrl(siteConfig.images.mockup) },
     ],
     links: [
-      { rel: "canonical", href: "/" },
+      { rel: "canonical", href: absoluteUrl("/") },
       {
         rel: "preload",
         as: "image",
-        href: "/image/hero-belgica.webp",
+        href: siteConfig.images.hero,
         type: "image/webp",
       },
     ],
@@ -55,15 +56,18 @@ export const Route = createFileRoute("/")({
           "@type": "Product",
           name: "Kit Emprego Bélgica 2026",
           description,
-          image: "/image/mockup-kit-emprego-belgica.webp",
+          image: absoluteUrl(siteConfig.images.mockup),
+          url: absoluteUrl("/"),
           offers: {
             "@type": "Offer",
             price: "9.90",
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
+            url: absoluteUrl("/"),
           },
         }),
       },
+
       {
         type: "application/ld+json",
         children: JSON.stringify({
