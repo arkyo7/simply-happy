@@ -14,6 +14,7 @@ import { Route as PagamentoSucessoRouteImport } from './routes/pagamento-sucesso
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as ReembolsoRouteImport } from './routes/reembolso'
 import { Route as TermosRouteImport } from './routes/termos'
+import { Route as ApiPublicVerifyPaymentRouteImport } from './routes/api/public/verify-payment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const TermosRoute = TermosRouteImport.update({
   path: '/termos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicVerifyPaymentRoute = ApiPublicVerifyPaymentRouteImport.update({
+  id: '/api/public/verify-payment',
+  path: '/api/public/verify-payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/privacidade': typeof PrivacidadeRoute
   '/reembolso': typeof ReembolsoRoute
   '/termos': typeof TermosRoute
+  '/api/public/verify-payment': typeof ApiPublicVerifyPaymentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/privacidade': typeof PrivacidadeRoute
   '/reembolso': typeof ReembolsoRoute
   '/termos': typeof TermosRoute
+  '/api/public/verify-payment': typeof ApiPublicVerifyPaymentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,25 @@ export interface FileRoutesById {
   '/privacidade': typeof PrivacidadeRoute
   '/reembolso': typeof ReembolsoRoute
   '/termos': typeof TermosRoute
+  '/api/public/verify-payment': typeof ApiPublicVerifyPaymentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/pagamento-sucesso' | '/privacidade' | '/reembolso' | '/termos'
+    | '/'
+    | '/pagamento-sucesso'
+    | '/privacidade'
+    | '/reembolso'
+    | '/termos'
+    | '/api/public/verify-payment'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/pagamento-sucesso' | '/privacidade' | '/reembolso' | '/termos'
+  to:
+    | '/'
+    | '/pagamento-sucesso'
+    | '/privacidade'
+    | '/reembolso'
+    | '/termos'
+    | '/api/public/verify-payment'
   id:
     | '__root__'
     | '/'
@@ -76,6 +96,7 @@ export interface FileRouteTypes {
     | '/privacidade'
     | '/reembolso'
     | '/termos'
+    | '/api/public/verify-payment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -84,6 +105,7 @@ export interface RootRouteChildren {
   PrivacidadeRoute: typeof PrivacidadeRoute
   ReembolsoRoute: typeof ReembolsoRoute
   TermosRoute: typeof TermosRoute
+  ApiPublicVerifyPaymentRoute: typeof ApiPublicVerifyPaymentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -123,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/verify-payment': {
+      id: '/api/public/verify-payment'
+      path: '/api/public/verify-payment'
+      fullPath: '/api/public/verify-payment'
+      preLoaderRoute: typeof ApiPublicVerifyPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -132,7 +161,18 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacidadeRoute: PrivacidadeRoute,
   ReembolsoRoute: ReembolsoRoute,
   TermosRoute: TermosRoute,
+  ApiPublicVerifyPaymentRoute: ApiPublicVerifyPaymentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

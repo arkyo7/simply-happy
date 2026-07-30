@@ -1,16 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { absoluteUrl, siteConfig } from "@/config/siteConfig";
 
 const title = "Pagamento confirmado | Kit Emprego Bélgica 2026";
 const description =
-  "Página de confirmação de pagamento do Kit Emprego Bélgica 2026. O download é liberado somente após a confirmação do pagamento.";
-
-/**
- * Enquanto não existir verificação real do pagamento no backend (Stripe),
- * o download permanece bloqueado. Esta flag NUNCA deve ser ativada apenas
- * porque o visitante acessou esta URL.
- */
-const isPaymentConfirmed = false;
+  "Página de confirmação de pagamento do Kit Emprego Bélgica 2026. O download é liberado somente após a confirmação do pagamento pela Stripe.";
 
 export const Route = createFileRoute("/pagamento-sucesso")({
   component: PaymentSuccess,
@@ -19,18 +13,54 @@ export const Route = createFileRoute("/pagamento-sucesso")({
       { title },
       { name: "description", content: description },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Pagamento confirmado | Kit Emprego Bélgica 2026" },
+      { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Pagamento confirmado | Kit Emprego Bélgica 2026" },
+      { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/pagamento-sucesso") }],
   }),
 });
 
+type State =
+  | { kind: "verifying" }
+  | { kind: "paid"; downloadUrl: string }
+  | { kind: "failed" };
+
 function PaymentSuccess() {
+  const [state, setState] = useState<State>({ kind: "verifying" });
+
+  useEffect(() => {
+    const sessionId = new URLSearchParams(window.location.search).get("session_id");
+    if (!sessionId) {
+      setState({ kind: "failed" });
+      return;
+    }
+
+    let active = true;
+    fetch("/api/public/verify-payment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ session_id: sessionId }),
+    })
+      .then((res) => res.json())
+      .then((data: { status?: string; downloadUrl?: string }) => {
+        if (!active) return;
+        if (data.status === "paid" && data.downloadUrl) {
+          setState({ kind: "paid", downloadUrl: data.downloadUrl });
+        } else {
+          setState({ kind: "failed" });
+        }
+      })
+      .catch(() => active && setState({ kind: "failed" }));
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 w-full border-t-[3px] border-b border-belgium-yellow border-b-border bg-background/80 backdrop-blur-md">
@@ -49,32 +79,38 @@ function PaymentSuccess() {
 
       <main className="mx-auto max-w-[820px] px-4 py-16 sm:px-6 md:py-24">
         <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Obrigado pela sua compra
+          {state.kind === "paid" ? "Pagamento confirmado!" : "Obrigado pela sua compra"}
         </h1>
-        <p className="mt-5 max-w-[60ch] text-[15px] leading-relaxed text-muted-foreground">
-          Assim que o pagamento do {siteConfig.productName} for confirmado, o link de download será
-          liberado nesta página e enviado para o e-mail informado no checkout.
-        </p>
 
         <div className="mt-10 rounded-2xl border border-belgium-yellow/30 bg-surface p-6 sm:p-8">
-          {isPaymentConfirmed ? (
-            <a
-              href="#"
-              className="inline-flex h-[46px] items-center justify-center rounded-xl bg-belgium-yellow px-6 text-sm font-semibold leading-none text-belgium-black"
-            >
-              Baixar o Kit
-            </a>
-          ) : (
+          {state.kind === "verifying" && (
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
+              Estamos confirmando seu pagamento…
+            </p>
+          )}
+
+          {state.kind === "paid" && (
             <>
-              <p className="text-sm font-semibold text-foreground">
-                Aguardando confirmação do pagamento
+              <p className="text-[15px] leading-relaxed text-muted-foreground">
+                Seu {siteConfig.productName} está pronto para download.
               </p>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                O botão de download aparece automaticamente aqui depois que o pagamento for
-                confirmado pelo provedor de pagamento. O acesso à página, sozinho, não libera o
-                arquivo.
+              <a
+                href={state.downloadUrl}
+                className="mt-6 inline-flex h-[46px] items-center justify-center rounded-xl bg-belgium-yellow px-6 text-sm font-semibold leading-none text-belgium-black transition-colors hover:bg-belgium-yellow-hover"
+              >
+                Baixar o Kit
+              </a>
+              <p className="mt-4 text-xs text-muted-foreground">
+                Este link de download é temporário e expira em 10 minutos.
               </p>
             </>
+          )}
+
+          {state.kind === "failed" && (
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
+              Não foi possível confirmar o pagamento. Verifique sua compra ou entre em contato
+              conosco.
+            </p>
           )}
         </div>
 
