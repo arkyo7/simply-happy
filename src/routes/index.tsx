@@ -6,10 +6,8 @@ import { ProblemSection } from "@/components/kit/ProblemSection";
 import { GuideContents } from "@/components/kit/GuideContents";
 import { ProductPreview } from "@/components/kit/ProductPreview";
 import { AudienceSection } from "@/components/kit/AudienceSection";
-import { TransparencySection } from "@/components/kit/TransparencySection";
 import { OfferSection } from "@/components/kit/OfferSection";
 import { FaqSection, faqs } from "@/components/kit/FaqSection";
-import { FinalCta } from "@/components/kit/FinalCta";
 import { Footer } from "@/components/kit/Footer";
 import { MobileStickyCta } from "@/components/kit/MobileStickyCta";
 
@@ -85,10 +83,8 @@ function Index() {
         <GuideContents />
         <ProductPreview />
         <AudienceSection />
-        <TransparencySection />
         <OfferSection />
         <FaqSection />
-        <FinalCta />
       </main>
       <Footer />
       <div className="h-20 md:hidden" aria-hidden="true" />
