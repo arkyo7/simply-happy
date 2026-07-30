@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "product" },
       { property: "og:url", content: "/" },
-      { property: "og:image", content: "/images/mockup-kit-emprego-belgica.webp" },
+      { property: "og:image", content: "/image/mockup-kit-emprego-belgica.webp" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Kit Emprego Bélgica 2026" },
       {
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: "/images/hero-belgica.webp",
+        href: "/image/hero-belgica.webp",
         type: "image/webp",
       },
     ],
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/")({
           "@type": "Product",
           name: "Kit Emprego Bélgica 2026",
           description,
-          image: "/images/mockup-kit-emprego-belgica.webp",
+          image: "/image/mockup-kit-emprego-belgica.webp",
           offers: {
             "@type": "Offer",
             price: "9.90",

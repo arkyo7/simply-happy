@@ -7,9 +7,9 @@ export const siteConfig = {
   updatedYear: "2026",
   supportEmail: "",
   images: {
-    hero: "/images/hero-belgica.webp",
-    cover: "/images/capa-kit-emprego-belgica.webp",
-    mockup: "/images/mockup-kit-emprego-belgica.webp",
+    hero: "/image/hero-belgica.webp",
+    cover: "/image/capa-kit-emprego-belgica.webp",
+    mockup: "/image/mockup-kit-emprego-belgica.webp",
   },
 } as const;
 
