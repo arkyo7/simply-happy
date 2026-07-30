@@ -24,10 +24,7 @@ export const Route = createFileRoute("/pagamento-sucesso")({
   }),
 });
 
-type State =
-  | { kind: "verifying" }
-  | { kind: "paid"; downloadUrl: string }
-  | { kind: "failed" };
+type State = { kind: "verifying" } | { kind: "paid"; downloadUrl: string } | { kind: "failed" };
 
 function PaymentSuccess() {
   const [state, setState] = useState<State>({ kind: "verifying" });
