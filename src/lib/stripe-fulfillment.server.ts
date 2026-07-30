@@ -25,6 +25,7 @@ type StripeSession = {
 
 type StripeEvent = {
   type?: string;
+  livemode?: boolean;
   data?: { object?: StripeSession };
 };
 
