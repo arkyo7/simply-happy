@@ -19,6 +19,7 @@ export function SafeImage({
   fit = "cover",
   loading = "lazy",
 }: SafeImageProps) {
+  const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
 
   return (
@@ -39,9 +40,11 @@ export function SafeImage({
           alt={alt}
           loading={loading}
           decoding="async"
+          onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
           className={cn(
-            "absolute inset-0 h-full w-full",
+            "absolute inset-0 h-full w-full transition-opacity duration-500",
+            loaded ? "opacity-100" : "opacity-0",
             fit === "cover" ? "object-cover" : "object-contain",
           )}
         />
