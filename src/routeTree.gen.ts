@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PagamentoSucessoRouteImport } from './routes/pagamento-sucesso'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as ReembolsoRouteImport } from './routes/reembolso'
 import { Route as TermosRouteImport } from './routes/termos'
@@ -17,6 +18,11 @@ import { Route as TermosRouteImport } from './routes/termos'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagamentoSucessoRoute = PagamentoSucessoRouteImport.update({
+  id: '/pagamento-sucesso',
+  path: '/pagamento-sucesso',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
@@ -37,12 +43,14 @@ const TermosRoute = TermosRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/pagamento-sucesso': typeof PagamentoSucessoRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reembolso': typeof ReembolsoRoute
   '/termos': typeof TermosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/pagamento-sucesso': typeof PagamentoSucessoRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reembolso': typeof ReembolsoRoute
   '/termos': typeof TermosRoute
@@ -50,20 +58,29 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/pagamento-sucesso': typeof PagamentoSucessoRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reembolso': typeof ReembolsoRoute
   '/termos': typeof TermosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacidade' | '/reembolso' | '/termos'
+  fullPaths:
+    '/' | '/pagamento-sucesso' | '/privacidade' | '/reembolso' | '/termos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacidade' | '/reembolso' | '/termos'
-  id: '__root__' | '/' | '/privacidade' | '/reembolso' | '/termos'
+  to: '/' | '/pagamento-sucesso' | '/privacidade' | '/reembolso' | '/termos'
+  id:
+    | '__root__'
+    | '/'
+    | '/pagamento-sucesso'
+    | '/privacidade'
+    | '/reembolso'
+    | '/termos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PagamentoSucessoRoute: typeof PagamentoSucessoRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   ReembolsoRoute: typeof ReembolsoRoute
   TermosRoute: typeof TermosRoute
@@ -76,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pagamento-sucesso': {
+      id: '/pagamento-sucesso'
+      path: '/pagamento-sucesso'
+      fullPath: '/pagamento-sucesso'
+      preLoaderRoute: typeof PagamentoSucessoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacidade': {
@@ -104,6 +128,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PagamentoSucessoRoute: PagamentoSucessoRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   ReembolsoRoute: ReembolsoRoute,
   TermosRoute: TermosRoute,
@@ -111,13 +136,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

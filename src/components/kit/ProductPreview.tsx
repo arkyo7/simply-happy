@@ -1,5 +1,4 @@
 import { BuyButton } from "./BuyButton";
-import { KitPdfLinks } from "./KitPdfLinks";
 import { siteConfig } from "@/config/siteConfig";
 
 const specs = [
@@ -46,9 +45,8 @@ export function ProductPreview() {
             ))}
           </ul>
 
-          <BuyButton className="mt-10 w-full sm:w-auto">Quero acessar o guia</BuyButton>
+          <BuyButton className="mt-10 w-full sm:w-auto">Comprar agora</BuyButton>
 
-          <KitPdfLinks className="mt-4" />
         </div>
       </div>
     </section>

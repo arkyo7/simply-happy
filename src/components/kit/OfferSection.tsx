@@ -1,7 +1,6 @@
 import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { BuyButton } from "./BuyButton";
-import { KitPdfLinks } from "./KitPdfLinks";
 import { OFFER_ANCHOR_ID, siteConfig } from "@/config/siteConfig";
 
 const included = [
@@ -60,7 +59,6 @@ export function OfferSection() {
             Comprar agora por {siteConfig.currentPrice}
           </BuyButton>
 
-          <KitPdfLinks className="mt-4" />
 
 
           <p className="mt-4 text-sm text-muted-foreground">
