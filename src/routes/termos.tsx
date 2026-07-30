@@ -39,13 +39,12 @@ function TermosPage() {
 
       <LegalSection title="2. Descrição do produto">
         <p>
-          O {legalConfig.product.name} é um produto digital entregue em{" "}
-          {legalConfig.product.format}, com {legalConfig.product.pages} páginas. Não
-          existe envio de material físico.
+          O {legalConfig.product.name} é um produto digital entregue em {legalConfig.product.format}
+          , com {legalConfig.product.pages} páginas. Não existe envio de material físico.
         </p>
         <p>
-          O material reúne informações, modelos, exemplos e orientações sobre a procura
-          de emprego na Bélgica.
+          O material reúne informações, modelos, exemplos e orientações sobre a procura de emprego
+          na Bélgica.
         </p>
       </LegalSection>
 
@@ -71,9 +70,8 @@ function TermosPage() {
 
       <LegalSection title="5. Licença de uso">
         <p>
-          A compra concede uma licença pessoal, limitada, individual e intransferível
-          para uso do material para fins pessoais. A compra não transfere direitos
-          autorais.
+          A compra concede uma licença pessoal, limitada, individual e intransferível para uso do
+          material para fins pessoais. A compra não transfere direitos autorais.
         </p>
       </LegalSection>
 
@@ -93,8 +91,8 @@ function TermosPage() {
 
       <LegalSection title="7. Propriedade intelectual">
         <p>
-          Textos, estrutura, design e materiais do produto são protegidos. O conteúdo
-          não pode ser copiado ou comercializado sem autorização.
+          Textos, estrutura, design e materiais do produto são protegidos. O conteúdo não pode ser
+          copiado ou comercializado sem autorização.
         </p>
       </LegalSection>
 
@@ -125,8 +123,8 @@ function TermosPage() {
 
       <LegalSection title="10. Compatibilidade">
         <p>
-          O produto é fornecido em PDF. {legalConfig.product.compatibility} O comprador
-          deve verificar se consegue abrir arquivos PDF antes da compra.
+          O produto é fornecido em PDF. {legalConfig.product.compatibility} O comprador deve
+          verificar se consegue abrir arquivos PDF antes da compra.
         </p>
       </LegalSection>
 
@@ -157,8 +155,8 @@ function TermosPage() {
 
       <LegalSection title="13. Alterações do produto">
         <p>
-          O material poderá receber atualizações. A compra não garante acesso vitalício a
-          todas as futuras versões, salvo se isso for expressamente oferecido.
+          O material poderá receber atualizações. A compra não garante acesso vitalício a todas as
+          futuras versões, salvo se isso for expressamente oferecido.
         </p>
       </LegalSection>
 
@@ -181,9 +179,9 @@ function TermosPage() {
 
       <LegalSection title="15. Legislação e direitos do consumidor">
         <p>
-          Os direitos obrigatórios previstos pela legislação aplicável permanecem
-          preservados. Nenhuma cláusula destes termos deve eliminar direitos que não
-          possam ser legalmente excluídos.
+          Os direitos obrigatórios previstos pela legislação aplicável permanecem preservados.
+          Nenhuma cláusula destes termos deve eliminar direitos que não possam ser legalmente
+          excluídos.
         </p>
       </LegalSection>
     </LegalPageLayout>

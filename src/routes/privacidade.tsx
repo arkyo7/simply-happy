@@ -95,9 +95,8 @@ function PrivacidadePage() {
 
       <LegalSection title="6. Conservação">
         <p>
-          Os dados são mantidos somente pelo tempo necessário às finalidades descritas.
-          Alguns dados de transação podem precisar ser preservados por obrigações legais
-          e contábeis.
+          Os dados são mantidos somente pelo tempo necessário às finalidades descritas. Alguns dados
+          de transação podem precisar ser preservados por obrigações legais e contábeis.
         </p>
       </LegalSection>
 
@@ -118,8 +117,8 @@ function PrivacidadePage() {
 
       <LegalSection title="8. Segurança">
         <p>
-          São adotadas medidas razoáveis para proteger os dados tratados. Nenhum sistema,
-          porém, pode garantir segurança absoluta.
+          São adotadas medidas razoáveis para proteger os dados tratados. Nenhum sistema, porém,
+          pode garantir segurança absoluta.
         </p>
       </LegalSection>
 

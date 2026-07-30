@@ -25,10 +25,7 @@ export function Footer() {
             Política de reembolso
           </Link>
           {email && (
-            <a
-              href={`mailto:${email}`}
-              className="transition-colors hover:text-foreground"
-            >
+            <a href={`mailto:${email}`} className="transition-colors hover:text-foreground">
               Contato
             </a>
           )}

@@ -25,9 +25,7 @@ export function LegalPageLayout({ title, children }: LegalPageLayoutProps) {
       </header>
 
       <main className="mx-auto max-w-[820px] px-4 py-14 sm:px-6 md:py-20">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          {title}
-        </h1>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h1>
         <p className="mt-3 text-sm text-muted-foreground">
           Última atualização: {legalConfig.lastUpdated}
         </p>
@@ -54,13 +52,7 @@ export function LegalPageLayout({ title, children }: LegalPageLayoutProps) {
   );
 }
 
-export function LegalSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) {
+export function LegalSection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-3">
       <h2 className="text-xl font-semibold text-foreground">{title}</h2>
@@ -84,8 +76,8 @@ export function SellerDetails() {
   if (fields.length === 0) {
     return (
       <p>
-        Os dados completos do responsável serão publicados nesta página assim que a
-        atividade comercial estiver formalizada.
+        Os dados completos do responsável serão publicados nesta página assim que a atividade
+        comercial estiver formalizada.
       </p>
     );
   }

@@ -1,9 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  LegalList,
-  LegalPageLayout,
-  LegalSection,
-} from "@/components/legal/LegalPageLayout";
+import { LegalList, LegalPageLayout, LegalSection } from "@/components/legal/LegalPageLayout";
 import { legalConfig } from "@/config/legalConfig";
 import { absoluteUrl } from "@/config/siteConfig";
 
@@ -58,8 +54,7 @@ function ReembolsoPage() {
 
       <LegalSection title="3. Consentimento no checkout">
         <p>
-          Durante a futura integração do checkout deverá existir uma forma clara de o
-          comprador:
+          Durante a futura integração do checkout deverá existir uma forma clara de o comprador:
         </p>
         <LegalList
           items={[
@@ -86,8 +81,8 @@ function ReembolsoPage() {
 
       <LegalSection title="5. Problemas de compatibilidade">
         <p>
-          O produto é entregue em PDF e o comprador deve possuir um dispositivo
-          compatível. O suporte poderá ajudar quando existir um problema real no arquivo.
+          O produto é entregue em PDF e o comprador deve possuir um dispositivo compatível. O
+          suporte poderá ajudar quando existir um problema real no arquivo.
         </p>
       </LegalSection>
 
@@ -120,15 +115,15 @@ function ReembolsoPage() {
 
       <LegalSection title="7. Prazo de análise">
         <p>
-          As solicitações serão analisadas em prazo razoável, considerando a natureza do
-          caso e as informações fornecidas.
+          As solicitações serão analisadas em prazo razoável, considerando a natureza do caso e as
+          informações fornecidas.
         </p>
       </LegalSection>
 
       <LegalSection title="8. Direitos preservados">
         <p>
-          Esta política não elimina direitos obrigatórios do consumidor. Cada caso será
-          tratado conforme a legislação aplicável.
+          Esta política não elimina direitos obrigatórios do consumidor. Cada caso será tratado
+          conforme a legislação aplicável.
         </p>
       </LegalSection>
     </LegalPageLayout>

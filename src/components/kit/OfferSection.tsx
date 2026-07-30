@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import { BuyButton } from "./BuyButton";
 import { OFFER_ANCHOR_ID, siteConfig } from "@/config/siteConfig";
 
-
 const included = [
   "Guia completo em PDF",
   "Sites e agências de emprego",
@@ -81,7 +80,6 @@ export function OfferSection() {
           <p className="mt-2 text-xs text-muted-foreground/80">
             O preço de lançamento poderá ser alterado em uma futura atualização do produto.
           </p>
-
         </div>
       </div>
     </section>

@@ -17,8 +17,7 @@ export const legalConfig = {
     pages: 21,
     format: "PDF",
     delivery: "Acesso digital disponibilizado após a confirmação do pagamento.",
-    compatibility:
-      "Pode ser aberto em celular, tablet ou computador com um leitor de PDF.",
+    compatibility: "Pode ser aberto em celular, tablet ou computador com um leitor de PDF.",
   },
 
   lastUpdated: "30 de julho de 2026",
@@ -30,9 +29,7 @@ export const legalConfig = {
  */
 export function isLegalConfigComplete(): boolean {
   const { legalName, email, phone, businessAddress } = legalConfig.seller;
-  return Boolean(
-    legalName.trim() && email.trim() && phone.trim() && businessAddress.trim(),
-  );
+  return Boolean(legalName.trim() && email.trim() && phone.trim() && businessAddress.trim());
 }
 
 export type SellerField = {
