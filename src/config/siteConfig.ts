@@ -2,7 +2,9 @@ export const siteConfig = {
   productName: "Kit Emprego Bélgica 2026",
   currentPrice: "€9,90",
   originalPrice: "€39,90",
-  checkoutUrl: "#",
+  // Payment Link da Stripe. Configure em VITE_STRIPE_PAYMENT_LINK
+  // (ou cole o link diretamente aqui, substituindo o "#").
+  checkoutUrl: (import.meta.env.VITE_STRIPE_PAYMENT_LINK as string | undefined) || "#",
   offerEndDate: null as string | null,
   updatedYear: "2026",
   supportEmail: "",
