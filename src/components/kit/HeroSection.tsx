@@ -15,15 +15,17 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0" aria-hidden="true">
-        <SafeImage
-          src="/images/hero-belgica.webp"
-          alt=""
-          ratio="16 / 9"
+        <img
+          src={siteConfig.images.hero}
+          alt="Brasileiro observando novas oportunidades profissionais em Bruxelas."
           loading="eager"
-          className="h-full rounded-none border-0 opacity-25"
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.85)_0%,rgba(5,5,5,0.92)_60%,#050505_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.88)_60%,rgba(0,0,0,0.95)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.96)_0%,rgba(0,0,0,0.82)_45%,rgba(0,0,0,0.45)_100%)]" />
       </div>
+
 
       <div className="relative mx-auto grid max-w-[1200px] items-center gap-14 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
