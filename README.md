@@ -53,3 +53,16 @@ Variáveis de ambiente necessárias (somente backend, valores nunca no código):
 - `BREVO_API_KEY`
 - `BREVO_SENDER_NAME`
 - `BREVO_SENDER_EMAIL`
+
+### Modo de teste da Stripe
+
+O mesmo endpoint `POST /api/stripe/webhook` aceita eventos de produção e de teste.
+Teste e produção usam segredos e Payment Links separados, que nunca se misturam:
+
+- Produção: `STRIPE_WEBHOOK_SECRET` + `STRIPE_PAYMENT_LINK_ID` (somente `livemode: true`).
+- Teste (opcional): `STRIPE_TEST_WEBHOOK_SECRET` + `STRIPE_TEST_PAYMENT_LINK_ID` (somente `livemode: false`).
+
+A assinatura é verificada primeiro com o segredo de produção e depois com o de teste; se o modo
+do evento não corresponder ao segredo usado, a requisição é rejeitada com HTTP 400. Eventos de
+teste também recebem o PDF por e-mail, com o assunto prefixado por `[TESTE]`. Os marcadores de
+idempotência ficam separados em `fulfillments/live/` e `fulfillments/test/`.

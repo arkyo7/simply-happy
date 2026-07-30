@@ -25,6 +25,7 @@ type StripeSession = {
 
 type StripeEvent = {
   type?: string;
+  livemode?: boolean;
   data?: { object?: StripeSession };
 };
 
@@ -132,6 +133,8 @@ export async function handleStripeWebhook(
 ): Promise<WebhookResult> {
   const webhookSecret = requireEnv("STRIPE_WEBHOOK_SECRET");
   const paymentLinkId = requireEnv("STRIPE_PAYMENT_LINK_ID");
+  const testWebhookSecret = requireEnv("STRIPE_TEST_WEBHOOK_SECRET");
+  const testPaymentLinkId = requireEnv("STRIPE_TEST_PAYMENT_LINK_ID");
   const brevoApiKey = requireEnv("BREVO_API_KEY");
   const senderName = requireEnv("BREVO_SENDER_NAME");
   const senderEmail = requireEnv("BREVO_SENDER_EMAIL");
@@ -143,7 +146,17 @@ export async function handleStripeWebhook(
 
   if (!rawBody) return { status: 400, body: { error: "invalid_body" } };
 
-  if (!verifyStripeSignature(rawBody, signatureHeader, webhookSecret)) {
+  let signatureMode: "live" | "test" | null = null;
+  if (verifyStripeSignature(rawBody, signatureHeader, webhookSecret)) {
+    signatureMode = "live";
+  } else if (
+    testWebhookSecret &&
+    verifyStripeSignature(rawBody, signatureHeader, testWebhookSecret)
+  ) {
+    signatureMode = "test";
+  }
+
+  if (!signatureMode) {
     return { status: 400, body: { error: "invalid_signature" } };
   }
 
@@ -158,11 +171,23 @@ export async function handleStripeWebhook(
     return { status: 200, body: { received: true, ignored: true } };
   }
 
+  const isLive = event.livemode === true;
+  if ((isLive && signatureMode !== "live") || (!isLive && signatureMode !== "test")) {
+    return { status: 400, body: { error: "mode_mismatch" } };
+  }
+
+  if (!isLive && !testPaymentLinkId) {
+    console.error("Webhook de pagamento: configuração de teste ausente.");
+    return { status: 500, body: { error: "configuration_error" } };
+  }
+
+  const expectedPaymentLinkId = isLive ? paymentLinkId : testPaymentLinkId!;
+
   const session = event.data?.object ?? {};
   const sessionId = session.id;
   if (!sessionId) return { status: 400, body: { error: "invalid_body" } };
 
-  if (!isValidPurchase(session, paymentLinkId)) {
+  if (!isValidPurchase(session, expectedPaymentLinkId)) {
     return { status: 200, body: { received: true, ignored: true } };
   }
 
@@ -172,7 +197,7 @@ export async function handleStripeWebhook(
     return { status: 200, body: { received: true, ignored: true } };
   }
 
-  const markerPath = `fulfillments/${sessionId}.json`;
+  const markerPath = `fulfillments/${isLive ? "live" : "test"}/${sessionId}.json`;
 
   try {
     const existing = await get(markerPath, { access: "private" });
@@ -214,7 +239,9 @@ export async function handleStripeWebhook(
       sender: { name: senderName, email: senderEmail },
       to: [{ email }],
       replyTo: { email: senderEmail, name: senderName },
-      subject: "Seu Kit Emprego Bélgica 2026 chegou",
+      subject: isLive
+        ? "Seu Kit Emprego Bélgica 2026 chegou"
+        : "[TESTE] Seu Kit Emprego Bélgica 2026 chegou",
       htmlContent: emailHtml,
       attachment: [{ content: pdfBase64, name: PDF_PATH }],
       tags: ["kit-emprego-belgica", "stripe-fulfillment"],
