@@ -46,7 +46,6 @@ export function ProductPreview() {
           </ul>
 
           <BuyButton className="mt-10 w-full sm:w-auto">Comprar agora</BuyButton>
-
         </div>
       </div>
     </section>
