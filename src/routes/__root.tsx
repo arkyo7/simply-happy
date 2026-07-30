@@ -78,14 +78,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Kit Emprego Bélgica 2026 | Guia para Brasileiros" },
+      {
+        name: "description",
+        content:
+          "Guia digital com informações práticas para brasileiros que querem organizar sua procura por emprego na Bélgica.",
+      },
+      { name: "theme-color", content: "#050505" },
+      { name: "color-scheme", content: "dark" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "Kit Emprego Bélgica 2026 | Guia para Brasileiros" },
+      {
+        property: "og:description",
+        content:
+          "Guia digital com informações práticas para brasileiros que querem organizar sua procura por emprego na Bélgica.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+
     ],
     links: [
       {
