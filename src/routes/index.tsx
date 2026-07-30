@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { absoluteUrl, siteConfig } from "@/config/siteConfig";
+
 import { LaunchBar } from "@/components/kit/LaunchBar";
 import { Header } from "@/components/kit/Header";
 import { HeroSection } from "@/components/kit/HeroSection";
