@@ -8,8 +8,7 @@ export function LaunchBar() {
           aria-hidden="true"
           className="mr-2 inline-block h-2 w-2 rounded-full bg-belgium-red align-middle"
         />
-        Preço de lançamento por tempo limitado: Kit completo por apenas{" "}
-        {siteConfig.currentPrice}
+        Preço de lançamento por tempo limitado: Kit completo por apenas {siteConfig.currentPrice}
       </p>
     </div>
   );

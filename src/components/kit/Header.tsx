@@ -45,7 +45,6 @@ export function Header() {
           </BuyButton>
         </div>
       </div>
-
     </header>
   );
 }
