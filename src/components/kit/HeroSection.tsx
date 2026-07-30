@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import { SafeImage } from "./SafeImage";
 import { BuyButton } from "./BuyButton";
 import { siteConfig } from "@/config/siteConfig";
 
