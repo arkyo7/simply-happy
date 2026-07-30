@@ -1,4 +1,3 @@
-import { SafeImage } from "./SafeImage";
 import { BuyButton } from "./BuyButton";
 import { siteConfig } from "@/config/siteConfig";
 
@@ -15,17 +14,16 @@ export function ProductPreview() {
   return (
     <section className="border-t border-border bg-surface-2">
       <div className="mx-auto grid max-w-[1200px] items-center gap-14 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-2 lg:gap-20">
-        <div className="mx-auto w-full max-w-[290px] sm:max-w-[320px] lg:max-w-[400px]">
-          <SafeImage
+        <div className="flex items-center justify-center">
+          <img
             src={siteConfig.images.cover}
-            alt="Capa do Kit Emprego Bélgica 2026."
-            ratio="3 / 4"
-            fit="contain"
+            alt="Capa do Kit Emprego Bélgica 2026"
             loading="lazy"
-            className="rounded-none border-0 bg-transparent"
-            imgClassName="drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+            decoding="async"
+            className="block h-auto w-full max-w-[280px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:max-w-[360px] lg:max-w-[390px]"
           />
         </div>
+
 
 
         <div>
