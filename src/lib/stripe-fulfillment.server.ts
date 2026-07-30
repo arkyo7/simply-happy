@@ -66,9 +66,7 @@ export function verifyStripeSignature(
 
   return signatures.some((signature) => {
     const candidate = Buffer.from(signature, "utf8");
-    return (
-      candidate.length === expectedBuffer.length && timingSafeEqual(candidate, expectedBuffer)
-    );
+    return candidate.length === expectedBuffer.length && timingSafeEqual(candidate, expectedBuffer);
   });
 }
 

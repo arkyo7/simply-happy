@@ -64,10 +64,7 @@ export const Route = createFileRoute("/api/public/verify-payment")({
           return json({ status: "invalid", message: "Requisição inválida." }, 400);
         }
 
-        if (
-          typeof sessionId !== "string" ||
-          !/^cs_[A-Za-z0-9_]{10,200}$/.test(sessionId)
-        ) {
+        if (typeof sessionId !== "string" || !/^cs_[A-Za-z0-9_]{10,200}$/.test(sessionId)) {
           return json({ status: "invalid", message: "Sessão de pagamento inválida." }, 400);
         }
 
