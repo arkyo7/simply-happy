@@ -20,13 +20,8 @@ export function scrollToOffer() {
 export function isCheckoutActive(): boolean {
   const configured = siteConfig.checkoutUrl !== "#" && siteConfig.checkoutUrl !== "";
   if (!configured) return false;
-  if (!isLegalConfigComplete()) {
-    if (import.meta.env.DEV) {
-      console.error(
-        "Não é possível ativar o checkout antes de preencher os dados legais obrigatórios.",
-      );
-    }
-    return false;
+  if (!isLegalConfigComplete() && import.meta.env.DEV) {
+    console.warn("Checkout ativo com dados legais incompletos em legalConfig.");
   }
   return true;
 }
