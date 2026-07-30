@@ -1,14 +1,9 @@
+import { Link } from "@tanstack/react-router";
 import { siteConfig } from "@/config/siteConfig";
+import { legalConfig } from "@/config/legalConfig";
 
 export function Footer() {
-  const links = [
-    { label: "Termos de uso", href: "#" },
-    { label: "Política de privacidade", href: "#" },
-    { label: "Política de reembolso", href: "#" },
-    ...(siteConfig.supportEmail
-      ? [{ label: "Contato", href: `mailto:${siteConfig.supportEmail}` }]
-      : []),
-  ];
+  const email = legalConfig.seller.email;
 
   return (
     <footer className="border-t border-border bg-surface-2">
@@ -20,11 +15,20 @@ export function Footer() {
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground md:justify-end">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} className="transition-colors hover:text-foreground">
-              {l.label}
+          <Link to="/termos" className="transition-colors hover:text-foreground">
+            Termos de uso
+          </Link>
+          <Link to="/privacidade" className="transition-colors hover:text-foreground">
+            Política de privacidade
+          </Link>
+          <Link to="/reembolso" className="transition-colors hover:text-foreground">
+            Política de reembolso
+          </Link>
+          {email && (
+            <a href={`mailto:${email}`} className="transition-colors hover:text-foreground">
+              Contato
             </a>
-          ))}
+          )}
         </nav>
       </div>
       <div className="mx-auto max-w-[1200px] border-t border-border px-4 py-6 sm:px-6">

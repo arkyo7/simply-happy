@@ -25,7 +25,6 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.88)_60%,rgba(0,0,0,0.95)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.96)_0%,rgba(0,0,0,0.82)_45%,rgba(0,0,0,0.45)_100%)]" />
       </div>
 
-
       <div className="relative mx-auto grid max-w-[1200px] items-center gap-14 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <span className="inline-block rounded-full border border-belgium-yellow/40 px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-belgium-yellow">
@@ -86,8 +85,6 @@ export function HeroSection() {
             className="block h-auto w-full max-w-[320px] object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.65)] md:max-w-[420px] lg:max-w-[500px]"
           />
         </div>
-
-
       </div>
     </section>
   );

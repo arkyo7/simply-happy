@@ -24,8 +24,6 @@ export function ProductPreview() {
           />
         </div>
 
-
-
         <div>
           <h2 className="max-w-[24ch] text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
             Um guia prático para consultar durante toda a sua procura por emprego.

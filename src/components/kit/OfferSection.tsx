@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { BuyButton } from "./BuyButton";
 import { OFFER_ANCHOR_ID, siteConfig } from "@/config/siteConfig";
 
@@ -60,6 +61,21 @@ export function OfferSection() {
 
           <p className="mt-4 text-sm text-muted-foreground">
             Produto digital • Sem assinatura • Acesso após a confirmação do pagamento
+          </p>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Ao continuar, você declara que leu os{" "}
+            <Link to="/termos" className="underline-offset-4 hover:underline">
+              Termos de Uso
+            </Link>
+            , a{" "}
+            <Link to="/privacidade" className="underline-offset-4 hover:underline">
+              Política de Privacidade
+            </Link>{" "}
+            e a{" "}
+            <Link to="/reembolso" className="underline-offset-4 hover:underline">
+              Política de Reembolso
+            </Link>
+            .
           </p>
           <p className="mt-2 text-xs text-muted-foreground/80">
             O preço de lançamento poderá ser alterado em uma futura atualização do produto.

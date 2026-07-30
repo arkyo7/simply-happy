@@ -1,24 +1,39 @@
-# Simply Happy
+# Kit Emprego Bélgica 2026
 
-oi
+Landing page de venda do produto digital Kit Emprego Bélgica 2026.
 
-This project was built with [Lovable](https://lovable.dev).
+## Tecnologias
 
-## Build with Lovable
+- React
+- TypeScript
+- TanStack Router
+- Vite
+- Tailwind CSS
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/6c2a484c-683b-422d-b2e1-e07b2d66181a).
+## Desenvolvimento
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm install
 npm run dev
 ```
+
+## Verificação
+
+```bash
+npm run check
+```
+
+## Imagens
+
+As imagens ficam em `public/image/`:
+
+- hero-belgica.webp
+- capa-kit-emprego-belgica.webp
+- mockup-kit-emprego-belgica.webp
+
+## Configuração
+
+- O preço e o checkout ficam em `src/config/siteConfig.ts`.
+- Os dados legais ficam em `src/config/legalConfig.ts`.
+- A URL pública deve ser configurada em `VITE_SITE_URL` (ver `.env.example`).
+- Nenhuma chave secreta deve ser adicionada em variáveis `VITE_*`.

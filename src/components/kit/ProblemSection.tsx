@@ -18,8 +18,8 @@ export function ProblemSection() {
             podem ser pedidos?
           </p>
           <p>
-            Quando essas informações ficam espalhadas, você perde tempo e acaba adiando
-            candidaturas que poderia começar hoje.
+            Quando essas informações ficam espalhadas, você perde tempo e acaba adiando candidaturas
+            que poderia começar hoje.
           </p>
           <p className="border-l-2 border-belgium-yellow pl-5 text-lg font-semibold text-foreground">
             Este kit foi criado para transformar suas dúvidas em um plano claro.
