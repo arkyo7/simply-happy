@@ -59,6 +59,9 @@ export function OfferSection() {
             Comprar agora por {siteConfig.currentPrice}
           </BuyButton>
 
+          <KitPdfLinks className="mt-4" />
+
+
           <p className="mt-4 text-sm text-muted-foreground">
             Produto digital • Sem assinatura • Acesso após a confirmação do pagamento
           </p>
