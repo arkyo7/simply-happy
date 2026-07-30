@@ -6,6 +6,11 @@ export const siteConfig = {
   offerEndDate: null as string | null,
   updatedYear: "2026",
   supportEmail: "",
+  images: {
+    hero: "/images/hero-belgica.webp",
+    cover: "/images/capa-kit-emprego-belgica.webp",
+    mockup: "/images/mockup-kit-emprego-belgica.webp",
+  },
 } as const;
 
 export const OFFER_ANCHOR_ID = "oferta";
