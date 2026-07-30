@@ -239,7 +239,9 @@ export async function handleStripeWebhook(
       sender: { name: senderName, email: senderEmail },
       to: [{ email }],
       replyTo: { email: senderEmail, name: senderName },
-      subject: "Seu Kit Emprego Bélgica 2026 chegou",
+      subject: isLive
+        ? "Seu Kit Emprego Bélgica 2026 chegou"
+        : "[TESTE] Seu Kit Emprego Bélgica 2026 chegou",
       htmlContent: emailHtml,
       attachment: [{ content: pdfBase64, name: PDF_PATH }],
       tags: ["kit-emprego-belgica", "stripe-fulfillment"],
