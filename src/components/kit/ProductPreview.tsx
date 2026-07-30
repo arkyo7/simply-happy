@@ -1,5 +1,6 @@
 import { SafeImage } from "./SafeImage";
 import { BuyButton } from "./BuyButton";
+import { siteConfig } from "@/config/siteConfig";
 
 const specs = [
   "Guia digital em PDF",
@@ -14,20 +15,18 @@ export function ProductPreview() {
   return (
     <section className="border-t border-border bg-surface-2">
       <div className="mx-auto grid max-w-[1200px] items-center gap-14 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-2 lg:gap-20">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="mx-auto w-full max-w-[290px] sm:max-w-[320px] lg:max-w-[400px]">
           <SafeImage
-            src="/images/capa-kit-emprego-belgica.webp"
+            src={siteConfig.images.cover}
             alt="Capa do Kit Emprego Bélgica 2026."
             ratio="3 / 4"
-            fit="cover"
-          />
-          <SafeImage
-            src="/images/mockup-kit-emprego-belgica.webp"
-            alt="Kit Emprego Bélgica 2026 em formato digital."
-            ratio="3 / 4"
             fit="contain"
+            loading="lazy"
+            className="rounded-none border-0 bg-transparent"
+            imgClassName="drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
           />
         </div>
+
 
         <div>
           <h2 className="max-w-[24ch] text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
