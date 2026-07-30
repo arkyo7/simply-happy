@@ -38,7 +38,15 @@ export const Route = createFileRoute("/")({
           "Um passo a passo prático para brasileiros que querem procurar trabalho na Bélgica com mais direção.",
       },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/images/hero-belgica.webp",
+        type: "image/webp",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
