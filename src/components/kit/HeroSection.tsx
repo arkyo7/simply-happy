@@ -77,18 +77,17 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[520px]">
-          <SafeImage
+        <div className="relative z-20 flex w-full items-center justify-center">
+          <img
             src={siteConfig.images.mockup}
-            alt="Mockup digital do Kit Emprego Bélgica 2026."
-            ratio="4 / 5"
-            fit="contain"
+            alt="Mockup digital do Kit Emprego Bélgica 2026"
             loading="eager"
             fetchPriority="high"
-            className="rounded-none border-0 bg-transparent"
-            imgClassName="drop-shadow-[0_24px_60px_rgba(0,0,0,0.65)]"
+            decoding="async"
+            className="block h-auto w-full max-w-[320px] object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.65)] md:max-w-[420px] lg:max-w-[500px]"
           />
         </div>
+
 
       </div>
     </section>
