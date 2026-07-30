@@ -43,7 +43,7 @@ export const faqs = [
 export function FaqSection() {
   return (
     <section id="duvidas" className="border-t border-border bg-surface-2">
-      <div className="mx-auto max-w-[760px] px-4 py-20 text-center sm:px-6 md:py-28">
+      <div className="mx-auto max-w-[760px] px-4 pb-16 pt-20 text-center sm:px-6 md:pb-20 md:pt-28">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Perguntas frequentes
         </h2>
