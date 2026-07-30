@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { BuyButton } from "./BuyButton";
+import { KitPdfLinks } from "./KitPdfLinks";
 import { OFFER_ANCHOR_ID, siteConfig } from "@/config/siteConfig";
 
 const included = [
@@ -58,6 +59,9 @@ export function OfferSection() {
           <BuyButton className="mt-8 w-full sm:w-auto">
             Comprar agora por {siteConfig.currentPrice}
           </BuyButton>
+
+          <KitPdfLinks className="mt-4" />
+
 
           <p className="mt-4 text-sm text-muted-foreground">
             Produto digital • Sem assinatura • Acesso após a confirmação do pagamento
